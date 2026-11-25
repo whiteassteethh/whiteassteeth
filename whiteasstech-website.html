@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WhiteAssTeeth — Luxury Smile Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #FDFCFA;
+    --warm-white: #F7F4EF;
+    --cream: #EDE8DF;
+    --gold: #C8B89A;
+    --gold-light: #E8DDD0;
+    --black: #0E0E0E;
+    --charcoal: #2A2A2A;
+    --mid-gray: #555550;
+    --light-gray: #D4D0C8;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Montserrat', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 60px;
+    background: rgba(253,252,250,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,184,154,0.2);
+    transition: padding 0.3s ease;
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 400;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--black);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    text-decoration: none;
+    transition: color 0.2s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--black);
+    padding: 12px 28px;
+    text-decoration: none;
+    transition: background 0.25s, color 0.25s;
+  }
+
+  .nav-cta:hover { background: var(--gold); color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 96px;
+    position: relative;
+    overflow: hidden;
+    background: var(--white);
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 60px;
+    position: relative;
+    z-index: 2;
+    background: var(--white);
+  }
+
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 36px; height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(3.2rem, 5.5vw, 5.8rem);
+    font-weight: 300;
+    line-height: 1.06;
+    color: var(--black);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 2;
+    letter-spacing: 0.06em;
+    color: var(--mid-gray);
+    max-width: 360px;
+    margin-bottom: 52px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .btn-primary {
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--black);
+    padding: 18px 44px;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--gold); transform: translateY(-1px); }
+
+  .btn-ghost {
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    text-decoration: none;
+    border-bottom: 1px solid var(--light-gray);
+    padding-bottom: 3px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--gold); border-color: var(--gold); }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #111 0%, #1a1a1a 60%, #0E0E0E 100%);
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 60px;
+    opacity: 0;
+    animation: fadeIn 1.2s 0.5s forwards;
+  }
+
+  .hero-image-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 70% 30%, rgba(200,184,154,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 30% 80%, rgba(200,184,154,0.08) 0%, transparent 50%);
+  }
+
+  .hero-image-inner {
+    width: 320px;
+    height: 420px;
+    background: #1e1e1e;
+    border: 1px solid rgba(200,184,154,0.2);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .placeholder-icon {
+    font-size: 3rem;
+    opacity: 0.3;
+  }
+
+  .placeholder-label {
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.35);
+    color: var(--mid-gray);
+    font-style: italic;
+  }
+
+  .hero-badge {
+    position: absolute;
+    bottom: 120px;
+    right: -20px;
+    width: 110px;
+    height: 110px;
+    background: var(--black);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+  }
+
+  .hero-badge span:first-child {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: var(--gold);
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  .hero-badge span:last-child {
+    font-family: var(--sans);
+    font-size: 0.45rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+    text-align: center;
+  }
+
+  .hero-ticker {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: var(--black);
+    padding: 14px 0;
+    overflow: hidden;
+    z-index: 10;
+  }
+
+  .ticker-track {
+    display: flex;
+    gap: 0;
+    white-space: nowrap;
+    animation: ticker 24s linear infinite;
+  }
+
+  .ticker-item {
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    padding: 0 40px;
+    flex-shrink: 0;
+  }
+
+  .ticker-sep {
+    color: rgba(201,169,110,0.4);
+    padding: 0;
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--warm-white);
+    border-top: 1px solid var(--cream);
+    border-bottom: 1px solid var(--cream);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .stat-item {
+    padding: 44px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    border-right: 1px solid var(--cream);
+    text-align: center;
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--black);
+    line-height: 1;
+  }
+
+  .stat-number span { color: var(--gold); }
+
+  .stat-label {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+  }
+
+  /* ── SECTION COMMON ── */
+  section { position: relative; }
+
+  .section-eyebrow {
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px; height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 4vw, 3.6rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--black);
+    margin-bottom: 20px;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* ── SERVICES ── */
+  .services {
+    padding: 120px 60px;
+    background: var(--white);
+  }
+
+  .services-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 80px;
+    align-items: end;
+  }
+
+  .services-intro {
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 2.1;
+    color: var(--mid-gray);
+    letter-spacing: 0.04em;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--cream);
+  }
+
+  .service-card {
+    background: var(--white);
+    padding: 52px 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: background 0.3s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--gold);
+    transition: width 0.4s ease;
+  }
+
+  .service-card:hover { background: var(--warm-white); }
+  .service-card:hover::before { width: 100%; }
+
+  .service-number {
+    font-family: var(--serif);
+    font-size: 0.75rem;
+    color: var(--gold-light);
+    letter-spacing: 0.1em;
+  }
+
+  .service-name {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--black);
+  }
+
+  .service-desc {
+    font-size: 0.68rem;
+    font-weight: 400;
+    line-height: 2;
+    color: var(--mid-gray);
+    letter-spacing: 0.04em;
+    flex: 1;
+  }
+
+  .service-price {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--charcoal);
+    font-style: italic;
+  }
+
+  .service-link {
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: gap 0.2s;
+  }
+
+  .service-link:hover { gap: 16px; }
+
+  /* ── EXPERIENCE ── */
+  .experience {
+    background: var(--black);
+    padding: 120px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+  }
+
+  .experience .section-title { color: var(--white); }
+
+  .experience-body {
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 2.2;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.04em;
+    margin-bottom: 48px;
+  }
+
+  .experience-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .experience-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.8;
+  }
+
+  .experience-list li::before {
+    content: '—';
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .experience-visual {
+    position: relative;
+    height: 520px;
+  }
+
+  .exp-card-main {
+    position: absolute;
+    top: 0; right: 0;
+    width: 75%;
+    height: 82%;
+    background: linear-gradient(145deg, #1a1a1a, #111);
+    border: 1px solid rgba(201,169,110,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .exp-card-accent {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 55%;
+    height: 45%;
+    background: var(--gold-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .exp-accent-text {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--black);
+    line-height: 1;
+  }
+
+  .exp-accent-label {
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.5);
+  }
+
+  /* ── GALLERY ── */
+  .gallery {
+    padding: 120px 60px;
+    background: var(--warm-white);
+  }
+
+  .gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 64px;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 260px 260px;
+    gap: 3px;
+  }
+
+  .gallery-item {
+    background: var(--cream);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gallery-item:first-child {
+    grid-row: span 2;
+  }
+
+  .gallery-item-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.35;
+  }
+
+  .gallery-icon { font-size: 2rem; }
+
+  .gallery-label {
+    font-family: var(--serif);
+    font-size: 0.75rem;
+    font-style: italic;
+    color: var(--charcoal);
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+  .gallery-overlay-text {
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials {
+    padding: 100px 60px;
+    background: var(--white);
+    overflow: hidden;
+  }
+
+  .testimonials-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+
+  .testimonials-header .section-eyebrow { justify-content: center; }
+  .testimonials-header .section-eyebrow::before { display: none; }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--cream);
+  }
+
+  .testi-card {
+    background: var(--white);
+    padding: 52px 44px;
+  }
+
+  .testi-stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 24px;
+    color: var(--gold);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+  }
+
+  .testi-text {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--charcoal);
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+
+  .testi-author {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+  }
+
+  /* ── ABOUT STRIP ── */
+  .about-strip {
+    padding: 120px 60px;
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+  }
+
+  .about-visual {
+    position: relative;
+    height: 480px;
+  }
+
+  .about-photo-frame {
+    position: absolute;
+    top: 0; left: 40px;
+    width: calc(100% - 40px);
+    height: 88%;
+    background: var(--gold-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .about-photo-frame .placeholder-icon { font-size: 3.5rem; opacity: 0.2; }
+
+  .about-accent-box {
+    position: absolute;
+    bottom: 0; left: 0;
+    background: var(--black);
+    padding: 28px 32px;
+    width: 200px;
+  }
+
+  .about-accent-quote {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--gold);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .about-content .section-title { margin-bottom: 28px; }
+
+  .about-body {
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 2.1;
+    color: var(--mid-gray);
+    letter-spacing: 0.04em;
+    margin-bottom: 44px;
+  }
+
+  /* ── BOOKING CTA ── */
+  .booking-cta {
+    padding: 120px 60px;
+    background: var(--black);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .booking-cta::before {
+    content: 'BOOK';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--serif);
+    font-size: 28vw;
+    font-weight: 300;
+    color: rgba(255,255,255,0.02);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: -0.02em;
+  }
+
+  .booking-cta .section-eyebrow { justify-content: center; }
+  .booking-cta .section-eyebrow::before { display: none; }
+  .booking-cta .section-eyebrow { color: rgba(200,184,154,0.8); margin-bottom: 24px; }
+
+  .booking-title {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .booking-title em { color: var(--gold); font-style: italic; }
+
+  .booking-sub {
+    font-size: 0.72rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 56px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-gold {
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--gold);
+    padding: 20px 56px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.25s, transform 0.2s;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0A0A0A;
+    padding: 64px 60px 40px;
+    border-top: 1px solid rgba(200,184,154,0.12);
+  }
+
+  .footer-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+
+  .footer-brand-name {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .footer-tagline {
+    font-size: 0.65rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.08em;
+    line-height: 2;
+    max-width: 280px;
+  }
+
+  .footer-col-title {
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-links a {
+    font-size: 0.68rem;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 32px;
+  }
+
+  .footer-copy {
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.2);
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-social a {
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-social a:hover { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 80px; }
+    .hero-left { padding: 60px 24px 40px; }
+    .hero-right { height: 380px; }
+    .hero-image-inner { width: 220px; height: 300px; }
+
+    .stats-bar { grid-template-columns: 1fr; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--cream); }
+
+    .services { padding: 80px 24px; }
+    .services-header { grid-template-columns: 1fr; gap: 24px; }
+    .services-grid { grid-template-columns: 1fr; }
+
+    .experience { padding: 80px 24px; grid-template-columns: 1fr; gap: 60px; }
+    .experience-visual { height: 300px; }
+
+    .gallery { padding: 80px 24px; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-item:first-child { grid-row: span 1; }
+
+    .testi-grid { grid-template-columns: 1fr; }
+
+    .about-strip { padding: 80px 24px; grid-template-columns: 1fr; gap: 48px; }
+    .about-visual { height: 340px; }
+
+    .booking-cta { padding: 80px 24px; }
+    .footer-main { grid-template-columns: 1fr; gap: 40px; }
+    footer { padding: 60px 24px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">WhiteAssTeeth</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#book" class="nav-cta">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Luxury Smile Studio</div>
+    <h1 class="hero-title">
+      Your smile,<br>
+      <em>elevated.</em>
+    </h1>
+    <p class="hero-sub">
+      Premium teeth whitening and tooth gems designed to make you feel polished, confident, and undeniably you.
+    </p>
+    <div class="hero-actions">
+      <a href="#book" class="btn-primary">Book Your Session</a>
+      <a href="#services" class="btn-ghost">View Services</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-image-placeholder">
+      <div class="hero-image-inner">
+        <div class="placeholder-icon">📸</div>
+        <div class="placeholder-label">Your hero image here</div>
+      </div>
+      <div class="hero-badge">
+        <span>★★★</span>
+        <span>Celebrity<br>Clients</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-ticker">
+    <div class="ticker-track">
+      <span class="ticker-item">Teeth Whitening</span>
+      <span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Tooth Gems</span>
+      <span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Smile Transformations</span>
+      <span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Premium Results</span>
+      <span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Celebrity Trusted</span>
+      <span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Teeth Whitening</span>
+      <span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Tooth Gems</span>
+      <span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Smile Transformations</span>
+      <span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Premium Results</span>
+      <span class="ticker-item ticker-sep">·</span>
+      <span class="ticker-item">Celebrity Trusted</span>
+      <span class="ticker-item ticker-sep">·</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">500<span>+</span></div>
+    <div class="stat-label">Smiles Transformed</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">5<span>★</span></div>
+    <div class="stat-label">Average Rating</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">8<span>+</span></div>
+    <div class="stat-label">Shades Whiter</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-eyebrow">What We Offer</div>
+      <h2 class="section-title">Services built<br>for your <em>glow.</em></h2>
+    </div>
+    <p class="services-intro">
+      Every service is designed with precision, care, and your confidence in mind. No cookie-cutter treatments — just real results that speak for themselves.
+    </p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-number">01</div>
+      <div class="service-name">Signature Whitening</div>
+      <p class="service-desc">Our flagship in-studio treatment using professional-grade formula. See results in a single session — up to 8 shades brighter.</p>
+      <div class="service-price">Starting at $XXX</div>
+      <a href="#book" class="service-link">Book Now →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-number">02</div>
+      <div class="service-name">Extended Session</div>
+      <p class="service-desc">Maximum results for those who want to go all in. Extended treatment time for deeper whitening and longer-lasting effects.</p>
+      <div class="service-price">Starting at $XXX</div>
+      <a href="#book" class="service-link">Book Now →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-number">03</div>
+      <div class="service-name">Tooth Gems</div>
+      <p class="service-desc">Elevate your smile with a custom gem placement. Swarovski or gold options available — your smile, your art.</p>
+      <div class="service-price">Starting at $XXX</div>
+      <a href="#book" class="service-link">Book Now →</a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience">
+  <div>
+    <div class="section-eyebrow" style="color: rgba(200,184,154,0.9)">The Studio Experience</div>
+    <h2 class="section-title">More than a<br><em>treatment.</em></h2>
+    <p class="experience-body">
+      From the moment you walk in, you're in a space designed to make you feel elevated. The aesthetic, the energy, the results — it's all intentional.
+    </p>
+    <ul class="experience-list">
+      <li>Professional-grade whitening technology</li>
+      <li>A studio environment that actually looks like it belongs on your feed</li>
+      <li>Personalized care — not a conveyor belt service</li>
+      <li>Celebrity-trusted results you can see immediately</li>
+    </ul>
+  </div>
+  <div class="experience-visual">
+    <div class="exp-card-main">
+      <div class="placeholder-icon" style="font-size:2.5rem;opacity:0.15;color:white;">✨</div>
+      <div style="font-family:var(--serif);font-style:italic;color:rgba(255,255,255,0.2);font-size:0.85rem;letter-spacing:0.1em;">Studio photo</div>
+    </div>
+    <div class="exp-card-accent">
+      <div class="exp-accent-text">100%</div>
+      <div class="exp-accent-label">Satisfaction</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header">
+    <div>
+      <div class="section-eyebrow">Real Results</div>
+      <h2 class="section-title">The proof is<br>in the <em>smile.</em></h2>
+    </div>
+    <a href="#" class="btn-ghost" style="color:var(--charcoal)">View Full Gallery →</a>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <div class="gallery-item-inner"><div class="gallery-icon">📷</div><div class="gallery-label">Before & After</div></div>
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Before & After</span></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-item-inner"><div class="gallery-icon">💎</div><div class="gallery-label">Tooth Gem</div></div>
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Tooth Gem</span></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-item-inner"><div class="gallery-icon">✨</div><div class="gallery-label">Transformation</div></div>
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Transformation</span></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-item-inner"><div class="gallery-icon">📷</div><div class="gallery-label">Client Result</div></div>
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Client Result</span></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-item-inner"><div class="gallery-icon">💎</div><div class="gallery-label">Gem Closeup</div></div>
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Gem Closeup</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-header">
+    <div class="section-eyebrow">Client Love</div>
+    <h2 class="section-title">What they're <em>saying.</em></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"I've never felt more confident walking into a room. My smile is literally the first thing people comment on now."</p>
+      <div class="testi-author">— Client Name, City</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"The studio vibe alone is worth it. And my results? I went 7 shades whiter in one session. I'm obsessed."</p>
+      <div class="testi-author">— Client Name, City</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Got a tooth gem and everyone thinks I went to some LA studio. The attention to detail is unreal."</p>
+      <div class="testi-author">— Client Name, City</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT STRIP -->
+<section class="about-strip" id="about">
+  <div class="about-visual">
+    <div class="about-photo-frame">
+      <div class="placeholder-icon">📸</div>
+      <div class="placeholder-label" style="font-style:italic;color:var(--mid-gray);font-size:0.78rem;">Your photo here</div>
+    </div>
+    <div class="about-accent-box">
+      <div class="about-accent-quote">"I don't just whiten teeth — I transform confidence."</div>
+    </div>
+  </div>
+  <div class="about-content">
+    <div class="section-eyebrow">Meet Your Artist</div>
+    <h2 class="section-title">The person<br>behind the <em>smile.</em></h2>
+    <p class="about-body">
+      [Your name] is a luxury cosmetic smile artist with a reputation for real results and an even realer personality. Trusted by celebrity clients and everyday women who simply want to feel their best — she built WhiteAssTeeth to bridge the gap between premium quality and genuine human connection.<br><br>
+      If you want polished results delivered by someone who actually cares, you're in the right place.
+    </p>
+    <a href="#book" class="btn-primary">Book With Me</a>
+  </div>
+</section>
+
+<!-- BOOKING CTA -->
+<section class="booking-cta" id="book">
+  <div class="section-eyebrow">Ready When You Are</div>
+  <h2 class="booking-title">Book your<br><em>glow up.</em></h2>
+  <p class="booking-sub">Select your service and lock in your spot — sessions fill fast.</p>
+  <a href="YOUR_SQUARE_BOOKING_LINK" class="btn-gold" target="_blank" rel="noopener">Reserve Your Session</a>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-main">
+    <div>
+      <div class="footer-brand-name">WhiteAssTeeth</div>
+      <p class="footer-tagline">Luxury cosmetic smile studio. Premium whitening, tooth gems, and the confidence that comes with both.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#book">Book Now</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="#">@whiteasstech</a></li>
+        <li><a href="#"><span class="__cf_email__" data-cfemail="fb82948e89969a9297bb9e969a9297d5989496">[email&#160;protected]</span></a></li>
+        <li><a href="#">City, State</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 WhiteAssTeeth. All rights reserved.</div>
+    <div class="footer-social">
+      <a href="#
